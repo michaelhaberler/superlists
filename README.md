@@ -1,7 +1,7 @@
 superlists
 ==========
 
-A django, web-dev, tdd learning project.
+A django, web-dev, tdd learning project from the book "Test-Driven Development with Python".
 
 Usage
 -----
