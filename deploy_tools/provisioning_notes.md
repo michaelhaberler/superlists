@@ -19,10 +19,20 @@ eg, on Ubuntu:
 * see nginx.template.conf
 * replace SITENAME with, eg, staging.my-domain.com
 
+sed "s/SITENAME/klane.duckdns.org/g" \
+    deploy_tools/nginx.template.conf | sudo tee \
+    /etc/nginx/sites-available/klane.duckdns.org
+
+nginx_ensite klane.duckdns.org
+
 ## Upstart Job
 
 * see gunicorn-upstart.template.conf
 * replace SITENAME with, eg, staging.my-domain.com
+
+sed "s/SITENAME/klane.duckdns.org/g" \
+    deploy_tools/gunicorn-upstart.template.conf | sudo tee \
+    /etc/init/gunicorn-klane.duckdns.org.conf
 
 ## Folder structure:
 Assume we have a user account at /home/username
@@ -34,3 +44,8 @@ Assume we have a user account at /home/username
          ├── source
          ├── static
          └── virtualenv
+
+##
+
+sudo service nginx reload
+sudo start gunicorn-klane.duckdns.org
