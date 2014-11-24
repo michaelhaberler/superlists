@@ -49,3 +49,13 @@ Assume we have a user account at /home/username
 
 sudo service nginx reload
 sudo start gunicorn-klane.duckdns.org
+
+##
+git status
+git tag LIVE
+export TAG=`date +DEPLOYED-%F/%H%M`
+echo $TAG
+git tag $TAG
+git push origin LIVE $TAG
+
+git log --graph --oneline --decorate
